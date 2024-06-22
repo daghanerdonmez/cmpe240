@@ -1,0 +1,59 @@
+Prelab
+
+int a = 0b00; // 2-bit unsigned integer
+int b = 0b00; // 2-bit unsigned integer
+int c = 0b00; // 2-bit unsigned integer
+
+if (a < 1) and (b < 3):
+	c = 0b00
+else if (a ^ b) < 2: // ^ means xor
+	c = 0b01
+else if a > b:
+	c = 0b10
+else:
+	c = 0b11
+
+
+Fill in the truth table. Change XX values to 00, 01, 10 or 11.
+
+a1a0b1b0 	c1c0
+0000 		00
+0001 		00
+0010 		00
+0011 		11
+0100 		01
+0101 		01
+0110 		11
+0111 		11
+1000 		10
+1001 		10
+1010 		01
+1011 		01
+1100 		10
+1101 		10
+1110 		01
+1111 		01
+
+You can use pqrs. Using a1a0b1b0 will be harder to read. Use p'q'r's' for prime forms.
+
+Used form: SoP
+c0 = p'q'rs + p'qr's' + p'qr's + p'qrs' + p'qrs + pq'rs' + pq'rs + pqrs' + pqrs
+
+Used form: SoP
+c1 = p'q'rs + p'qrs' + p'qrs + pq'r's' + pq'r's + pqr's' + pqr's
+
+
+Minimize c1
+c1 = p'q'rs + p'qrs' + p'qrs + pq'r's' + pq'r's + pqr's' + pqr's
+c1 = p'q'rs + p'qr(s'+s) + pq'r'(s'+s) + pqr'(s'+s) 				//distributive
+c1 = p'q'rs + p'qr + pq'r' + pqr' 						//complementary
+c1 = p'q'rs + p'qr + pr'(q'+q) 							//distributive
+c1 = p'q'rs + p'qr + pr'							//complementary
+
+
+Minimize c1
+c0 = p'q'rs + p'qr's' + p'qr's + p'qrs' + p'qrs + pq'rs' + pq'rs + pqrs' + pqrs
+c0 = p'q'rs + p'qr'(s'+s) + p'qr(s'+s) + pq'r(s'+s) + pqr(s'+s) 			//distributive
+c0 = p'q'rs + p'qr' + p'qr + pq'r + pqr 						//complementary
+c0 = p'q'rs + p'q(r'+r) + pr(q'+q) 							//distributive
+c0 = p'q'rs + p'q + pr 									//complementary
